@@ -41,9 +41,15 @@ public class StudentDAO {
                         results.getString("t.subjects")
                 );
                 // Új diák objektum
-                //....
+                Student s = new Student(
+                        // tábla mezői
+                        results.getInt("id"),
+                        results.getString("name"),
+                        results.getDate("born"),
+                        t
+                );
                 // Listához fűzom
-                //students.add(s);
+                students.add(s);
             }
             conn.close(); // Kapcsolat bezárása
         }
@@ -52,4 +58,5 @@ public class StudentDAO {
             ex.printStackTrace();
         }
         return students;
+    }
 }
